@@ -1,0 +1,62 @@
+/* Design tokens for a professional, mature theme
+   - Neutral white/gray surfaces
+   - Light blue primary accents
+*/
+
+:root {
+  /* Base neutrals */
+  --bg: #f8fafc; /* slate-50 */
+  --bg-muted: #f1f5f9; /* slate-100 */
+  --surface: #ffffff; /* card/surface */
+  --border: #e2e8f0; /* slate-200 */
+  --text: #0f172a; /* slate-900 */
+  --text-muted: #475569; /* slate-600 */
+
+  /* Primary (light blue accents) */
+  --primary-50: #eff6ff;
+  --primary-100: #dbeafe;
+  --primary-200: #bfdbfe;
+  --primary-300: #93c5fd;
+  --primary-400: #60a5fa;
+  --primary-500: #3b82f6; /* main */
+  --primary-600: #2563eb;
+  --primary-700: #1d4ed8;
+
+  /* Radii, shadows */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --shadow-sm: 0 1px 2px rgba(2, 6, 23, 0.06);
+  --shadow-md: 0 2px 8px rgba(2, 6, 23, 0.08);
+}
+
+/* Map tokens to Tailwind via @theme so we can use utilities like bg-primary */
+@theme {
+  --color-background: var(--bg);
+  --color-foreground: var(--text);
+
+  --color-muted: var(--bg-muted);
+  --color-border: var(--border);
+  --color-card: var(--surface);
+
+  --color-primary: var(--primary-500);
+  --color-primary-foreground: #ffffff;
+  --color-primary-50: var(--primary-50);
+  --color-primary-100: var(--primary-100);
+  --color-primary-200: var(--primary-200);
+  --color-primary-300: var(--primary-300);
+  --color-primary-400: var(--primary-400);
+  --color-primary-600: var(--primary-600);
+  --color-primary-700: var(--primary-700);
+
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+
+  /* Fonts from Next font variables */
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}

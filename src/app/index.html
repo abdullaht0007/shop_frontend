@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>POS Palette Preview – #FFFCFB / #093FB4</title>
+    <style>
+      :root {
+        --primary-bg: #fffcfb; /* page background */
+        --secondary: #093fb4; /* brand / action */
+        --secondary-500: #1552d1; /* hover */
+        --secondary-700: #072f86; /* active/focus ring */
+        --ink: #1f2937; /* main text (gray-800) */
+        --muted: #6b7280; /* secondary text */
+        --surface: #ffffff; /* cards */
+        --border: #e5e7eb; /* light border */
+        --success: #059669;
+        --warning: #b45309;
+        --danger: #b91c1c;
+        --shadow: 0 10px 20px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.06);
+        --radius: 14px;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial;
+        color: var(--ink);
+        background: var(--primary-bg);
+        line-height: 1.5;
+      }
+
+      /* Header / hero */
+      .hero {
+        background: radial-gradient(
+            1200px 600px at 90% -10%,
+            rgba(9, 63, 180, 0.12),
+            transparent 60%
+          ),
+          radial-gradient(
+            900px 500px at -10% 120%,
+            rgba(9, 63, 180, 0.08),
+            transparent 60%
+          );
+        padding: 48px 20px 28px;
+        border-bottom: 1px solid var(--border);
+      }
+      .wrap {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 16px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 22px;
+      }
+      .logo {
+        width: 42px;
+        height: 42px;
+        border-radius: 10px;
+        background: var(--secondary);
+        box-shadow: inset 0 -6px 10px rgba(255, 255, 255, 0.18),
+          inset 0 8px 20px rgba(0, 0, 0, 0.12);
+      }
+      h1 {
+        margin: 0;
+        font-size: clamp(26px, 3.4vw, 38px);
+        letter-spacing: 0.2px;
+      }
+      p.lead {
+        margin: 0.4rem 0 0;
+        color: var(--muted);
+        max-width: 70ch;
+      }
+
+      /* Grid of samples */
+      .grid {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        margin: 26px 0 40px;
+      }
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 18px 18px;
+      }
+      .card h3 {
+        margin: 0 0 0.4rem;
+        font-size: 1.05rem;
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      /* Buttons */
+      .btn {
+        appearance: none;
+        border: 1px solid transparent;
+        border-radius: 12px;
+        padding: 10px 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 0.06s ease, background 0.18s ease,
+          border-color 0.18s ease;
+      }
+      .btn:active {
+        transform: translateY(1px);
+      }
+      .btn-primary {
+        background: var(--secondary);
+        color: #fff;
+      }
+      .btn-primary:hover {
+        background: var(--secondary-500);
+      }
+      .btn-primary:focus {
+        outline: 3px solid rgba(9, 63, 180, 0.25);
+        outline-offset: 2px;
+      }
+      .btn-outline {
+        background: transparent;
+        border-color: var(--secondary);
+        color: var(--secondary);
+      }
+      .btn-outline:hover {
+        background: rgba(9, 63, 180, 0.06);
+      }
+      .btn-ghost {
+        background: transparent;
+        color: var(--secondary);
+      }
+      .chip {
+        display: inline-block;
+        border-radius: 999px;
+        padding: 6px 10px;
+        border: 1px solid var(--border);
+        background: #fff;
+      }
+      .chip.brand {
+        border-color: rgba(9, 63, 180, 0.25);
+        color: var(--secondary);
+        background: rgba(9, 63, 180, 0.06);
+      }
+
+      /* Table */
+      table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        overflow: hidden;
+      }
+      th,
+      td {
+        padding: 10px 12px;
+        text-align: left;
+        border-bottom: 1px solid var(--border);
+      }
+      thead th {
+        background: rgba(9, 63, 180, 0.06);
+        color: #0b1e48;
+      }
+      tbody tr:last-child td {
+        border-bottom: none;
+      }
+      tbody tr:hover td {
+        background: rgba(9, 63, 180, 0.03);
+      }
+
+      /* Form */
+      .field {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .input {
+        padding: 10px 12px;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        background: #fff;
+        outline: none;
+      }
+      .input:focus {
+        border-color: var(--secondary);
+        box-shadow: 0 0 0 3px rgba(9, 63, 180, 0.2);
+      }
+
+      /* Alerts */
+      .alert {
+        border-radius: 12px;
+        padding: 10px 12px;
+        border: 1px solid;
+      }
+      .alert.info {
+        background: rgba(9, 63, 180, 0.08);
+        border-color: rgba(9, 63, 180, 0.4);
+        color: #0b2a72;
+      }
+      .alert.good {
+        background: rgba(5, 150, 105, 0.08);
+        border-color: rgba(5, 150, 105, 0.4);
+        color: #065f46;
+      }
+      .alert.warn {
+        background: rgba(180, 83, 9, 0.08);
+        border-color: rgba(180, 83, 9, 0.35);
+        color: #7c3e06;
+      }
+
+      /* POS mini mock */
+      .totals {
+        display: grid;
+        gap: 8px;
+        grid-template-columns: 1fr auto;
+        font-variant-numeric: tabular-nums;
+      }
+      .totals .n {
+        font-weight: 700;
+      }
+      .totals .grand {
+        font-size: 1.2rem;
+        color: #0b2a72;
+      }
+      .swatchRow {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .swatch {
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+      }
+      .b1 {
+        background: #093fb4;
+      }
+      .b2 {
+        background: #1552d1;
+      }
+      .b3 {
+        background: #072f86;
+      }
+      .p1 {
+        background: #fffcfb;
+      }
+      .p2 {
+        background: #fff;
+      }
+      .p3 {
+        background: #f8f8f8;
+      }
+      .note {
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+      footer {
+        padding: 30px 16px;
+        color: var(--muted);
+        border-top: 1px solid var(--border);
+        text-align: center;
+      }
+      a {
+        color: var(--secondary);
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="hero">
+      <div class="wrap">
+        <div class="brand">
+          <div class="logo" aria-hidden="true"></div>
+          <div>
+            <h1>POS Palette Preview</h1>
+            <p class="lead">
+              Primary: <strong>#FFFCFB</strong> · Secondary:
+              <strong>#093FB4</strong>. Try components below to judge
+              readability, contrast, and “feel”.
+            </p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <div class="grid">
+        <section class="card">
+          <h3>Buttons & Badges</h3>
+          <div class="row">
+            <button class="btn btn-primary">Primary Action</button>
+            <button class="btn btn-outline">Outline Action</button>
+            <button class="btn btn-ghost">Ghost Link</button>
+            <span class="chip">Badge</span>
+            <span class="chip brand">Brand Badge</span>
+          </div>
+          <p class="note">Hover the buttons to see secondary tints.</p>
+        </section>
+
+        <section class="card">
+          <h3>Form Fields</h3>
+          <div
+            class="row"
+            style="flex-direction: column; gap: 12px; max-width: 360px"
+          >
+            <label class="field">
+              <span>Product name</span>
+              <input class="input" placeholder="Hammer (16oz)" />
+            </label>
+            <label class="field">
+              <span>Barcode</span>
+              <input class="input" placeholder="Scan or type…" />
+            </label>
+            <div class="row">
+              <button class="btn btn-outline">Cancel</button>
+              <button class="btn btn-primary">Save</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <h3>Table (Inventory)</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>SKU</th>
+                <th>Name</th>
+                <th>Stock</th>
+                <th>Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>HD-001</td>
+                <td>Hammer 16oz</td>
+                <td>24</td>
+                <td>Rs 950</td>
+              </tr>
+              <tr>
+                <td>SC-112</td>
+                <td>Philips Screw #2</td>
+                <td>140</td>
+                <td>Rs 20</td>
+              </tr>
+              <tr>
+                <td>WD-40</td>
+                <td>WD-40 Spray 200ml</td>
+                <td>18</td>
+                <td>Rs 1,150</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="card">
+          <h3>Alerts</h3>
+          <div class="row" style="flex-direction: column; gap: 10px">
+            <div class="alert info">
+              Info · System will go offline at 11:30 PM for maintenance.
+            </div>
+            <div class="alert good">Success · Product added to inventory.</div>
+            <div class="alert warn">Warning · Stock low: “Hammer 16oz”.</div>
+          </div>
+        </section>
+
+        <section class="card">
+          <h3>Mini POS Totals</h3>
+          <div class="totals">
+            <div>Subtotal</div>
+            <div class="n">Rs 4,250</div>
+            <div>Tax (0%)</div>
+            <div class="n">Rs 0</div>
+            <div class="grand">Total</div>
+            <div class="grand n">Rs 4,250</div>
+          </div>
+          <div class="row" style="margin-top: 12px">
+            <button class="btn btn-primary">Pay (F2)</button>
+            <button class="btn btn-outline">Print</button>
+          </div>
+        </section>
+
+        <section class="card">
+          <h3>Swatches & Tints</h3>
+          <div class="swatchRow">
+            <div class="swatch b1" title="#093FB4"></div>
+            <div class="swatch b2" title="#1552d1"></div>
+            <div class="swatch b3" title="#072f86"></div>
+            <div class="swatch p1" title="#FFFCFB"></div>
+            <div class="swatch p2" title="#FFFFFF"></div>
+            <div class="swatch p3" title="#F8F8F8"></div>
+          </div>
+          <p class="note" style="margin-top: 8px">
+            Secondary shades (hover/active) + primary background variations for
+            receipts and tables.
+          </p>
+          <p class="note">Links look like <a href="#">this</a>.</p>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      Check contrast at different brightness levels on your monitor; adjust
+      <code>--secondary-500</code> / <code>--secondary-700</code> if needed.
+    </footer>
+  </body>
+</html>
